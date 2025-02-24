@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">APIRick&amp;Morty</string>
+    <string name="temporadas">Temporadas</string>
+    <string name="personajes">Personajes</string>
+    <string name="nombre">Nombre</string>
+    <string name="status">Status</string>
+    <string name="species">Species</string>
+    <string name="type">Type</string>
+    <string name="gender">Gender</string>
+    <string name="origen">Origen</string>
+    <string name="location">Location</string>
+</resources>
