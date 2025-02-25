@@ -22,11 +22,20 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Activity que muestra la lista de personajes de Rick y Morty.
+ * Puede mostrar todos los personajes o solo los de un episodio específico.
+ */
 class PersonajesActivity : AppCompatActivity() {
     private lateinit var b: ActivityPersonajesBinding
     private lateinit var personajesAdapter : PersonajesAdapter
     private val personajesList = mutableListOf<Personaje>()
 
+    /**
+     * Inicializa la actividad, configura los listeners y carga los datos según el modo seleccionado.
+     *
+     * @param savedInstanceState Estado guardado de la actividad si existe.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityPersonajesBinding.inflate(layoutInflater)
@@ -59,12 +68,20 @@ class PersonajesActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Inicializa el RecyclerView con su adaptador.
+     */
     private fun initRecyclerView() {
         personajesAdapter = PersonajesAdapter(personajesList)
         b.rvPersonajes.layoutManager = LinearLayoutManager(this)
         b.rvPersonajes.adapter = personajesAdapter
     }
 
+    /**
+     * Crea y configura una instancia de Retrofit para comunicarse con la API.
+     *
+     * @return Instancia configurada de Retrofit.
+     */
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://rickandmortyapi.com/api/")
@@ -72,6 +89,10 @@ class PersonajesActivity : AppCompatActivity() {
             .build()
     }
 
+    /**
+     * Carga todos los personajes disponibles en la API.
+     * Realiza múltiples peticiones de paginación para obtener la lista completa.
+     */
     private fun loadPersonajes() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -111,6 +132,11 @@ class PersonajesActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Carga los personajes que aparecen en un episodio específico.
+     *
+     * @param id ID del episodio cuyos personajes se quieren cargar.
+     */
     private fun loadPersonajes(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {

@@ -8,7 +8,17 @@ import android.graphics.RectF
 import android.graphics.Shader
 import com.squareup.picasso.Transformation
 
+/**
+ * Transformación personalizada para Picasso que convierte imágenes rectangulares en óvalos.
+ */
 class OvalTransformation : Transformation {
+
+    /**
+     * Transforma la imagen bitmap en un óvalo.
+     *
+     * @param source Bitmap original a transformar.
+     * @return Bitmap transformado en forma oval.
+     */
     override fun transform(source: Bitmap): Bitmap {
         val width = source.width
         val height = source.height
@@ -28,6 +38,11 @@ class OvalTransformation : Transformation {
         return output
     }
 
+    /**
+     * Devuelve una clave única para esta transformación.
+     *
+     * @return String con la clave que identifica esta transformación.
+     */
     override fun key(): String {
         return "OvalTransformation"
     }

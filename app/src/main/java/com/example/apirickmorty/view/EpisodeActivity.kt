@@ -25,11 +25,20 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Activity que muestra la lista de episodios organizados por temporadas.
+ * Permite seleccionar temporadas y navegar a los personajes de cada episodio.
+ */
 class EpisodeActivity : AppCompatActivity() {
     private lateinit var b: ActivityEpisodeBinding
     private lateinit var episodioAdapter : EpisodiosAdapter
     private val episodesList = mutableListOf<Episodio>()
 
+    /**
+     * Inicializa la actividad, configura los listeners y carga los datos iniciales.
+     *
+     * @param savedInstanceState Estado guardado de la actividad si existe.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityEpisodeBinding.inflate(layoutInflater)
@@ -66,6 +75,9 @@ class EpisodeActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Inicializa el RecyclerView con su adaptador.
+     */
     private fun initRecyclerView() {
         episodioAdapter = EpisodiosAdapter(episodesList) {
             onClickListener(it)
@@ -74,12 +86,20 @@ class EpisodeActivity : AppCompatActivity() {
         b.rvEpisodios.adapter = episodioAdapter
     }
 
+    /**
+     * Crea y configura una instancia de Retrofit para comunicarse con la API.
+     *
+     * @return Instancia configurada de Retrofit.
+     */
     private fun getRetrofit(): Retrofit =
             Retrofit.Builder()
             .baseUrl("https://rickandmortyapi.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+    /**
+     * Carga la lista de temporadas disponibles en el spinner.
+     */
     private fun loadTemporadas() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -113,6 +133,11 @@ class EpisodeActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Carga los episodios de una temporada específica.
+     *
+     * @param temp Número de temporada a cargar.
+     */
     private fun loadEpisodios(temp: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -147,9 +172,14 @@ class EpisodeActivity : AppCompatActivity() {
         }
     }
 
-    private fun onClickListener(id: Episodio) {
+    /**
+     * Maneja el evento de clic en un episodio.
+     *
+     * @param episodio Episodio seleccionado.
+     */
+    private fun onClickListener(episodio: Episodio) {
         val intent = Intent(this, PersonajesActivity::class.java)
-        intent.putExtra("id", id.id)
+        intent.putExtra("id", episodio.id)
         intent.putExtra("opcion", 2)
         startActivity(intent)
     }
