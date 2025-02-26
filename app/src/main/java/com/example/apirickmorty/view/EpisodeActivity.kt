@@ -69,9 +69,7 @@ class EpisodeActivity : AppCompatActivity() {
         }
 
         b.ivAtras.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("opcion", 2)
-            startActivity(intent)
+            finish()
         }
     }
 

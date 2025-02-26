@@ -35,8 +35,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         b.btTemporadas.setOnClickListener {
-            val intent = Intent(this, EpisodeActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, EpisodeActivity::class.java))
         }
 
         b.btEpisodios.setOnClickListener {

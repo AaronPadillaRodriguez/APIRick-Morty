@@ -9,4 +9,6 @@
     <string name="gender">Gender</string>
     <string name="origen">Origen</string>
     <string name="location">Location</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="cambiar_fondo">Cambiar Fondo</string>
 </resources>

@@ -49,22 +49,17 @@ class PersonajesActivity : AppCompatActivity() {
 
         val id = intent.getIntExtra("id", -1)
         val opcion = intent.getIntExtra("opcion", -1)
-        var intent: Intent
 
         initRecyclerView()
 
         if(opcion == 1) {
-            b.ivAtras.setOnClickListener {
-                intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
             loadPersonajes()
         } else if(opcion == 2) {
-            b.ivAtras.setOnClickListener {
-                intent = Intent(this, EpisodeActivity::class.java)
-                startActivity(intent)
-            }
             loadPersonajes(id)
+        }
+
+        b.ivAtras.setOnClickListener {
+            finish()
         }
     }
 

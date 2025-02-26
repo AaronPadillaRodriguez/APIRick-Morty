@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/fondo"
+        android:src="@drawable/fondo_oscuro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,6 +77,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btTemporadas"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btAjustes"
+        android:layout_width="205dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/portalepisodio"
+        android:fontFamily="@font/get_schwifty"
+        android:gravity="center"
+        android:shadowColor="#80000000"
+        android:shadowDx="4"
+        android:shadowDy="4"
+        android:shadowRadius="0.1"
+        android:text="@string/ajustes"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btEpisodios"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
